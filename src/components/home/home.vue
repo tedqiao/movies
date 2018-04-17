@@ -8,6 +8,7 @@
  </div>
  <div class="content">
    <popularity :movies="movies.subjects"></popularity>
+   <popularity :movies="movies.subjects" :menuList="newMenuList" :btn="true"></popularity>
  </div>
 </div>
 </template>
@@ -19,26 +20,7 @@ import popularity from '../popularity/popularity';
 export default {
   data() {
     return {
-      pages: [
-        {
-          html: '<div class="slider-item">slider1</div>',
-          style: {
-            background: '#1bbc9b',
-          },
-        },
-        {
-          html: '<div class="slider-item">slider2</div>',
-          style: {
-            background: '#4bbfc3',
-          },
-        },
-        {
-          html: '<div class="slider-item">slider3</div>',
-          style: {
-            background: 'url(http://via.placeholder.com/350x150)',
-          },
-        },
-      ],
+      pages: [],
       // Sliding configuration [obj]
       sliderinit: {
         currentPage: 0,
@@ -52,6 +34,7 @@ export default {
         duration: 300,
       },
       movies: [],
+      newMenuList: [],
     };
   },
   components: {
@@ -59,15 +42,15 @@ export default {
     popularity,
   },
   methods: {
-    slide(data) {
-      console.log(data);
-    },
-    onTap(data) {
-      console.log(data);
-    },
-    onInit(data) {
-      console.log(data);
-    },
+    // slide(data) {
+    //   console.log(data);
+    // },
+    // onTap(data) {
+    //   console.log(data);
+    // },
+    // onInit(data) {
+    //   console.log(data);
+    // },
   },
   created() {
     this.$http.get('http://localhost:3000/movies').then((res) => {
@@ -76,10 +59,28 @@ export default {
       if (response.errno !== 0) {
         return;
       }
-
       this.movies = response.data;
-      console.log(this.movies);
     });
+    this.pages = [{
+      html: '<div class="slider-item">slider1</div>',
+      style: {
+        background: 'url(http://ww4.sinaimg.cn/large0060lm7Tly1fm61fx42gvj30nw0a0tfe.jpg)',
+      },
+    },
+    {
+      html: '<div class="slider-item">slider2</div>',
+      style: {
+        background: 'url(http://ww3.sinaimg.cn/large/0060lm7Tly1fntrgop7ywj30nw0a0dn9.jpg)',
+      },
+    },
+    {
+      html: '<div class="slider-item">slider3</div>',
+      style: {
+        background: 'url(http://ww4.sinaimg.cn/large/0060lm7Tly1fm61fx42gvj30nw0a0tfe.jpg)',
+      },
+    }];
+
+    this.newMenuList = ['今日更新', '电影', '电视剧', '综艺', '动漫'];
   },
 };
 </script>
@@ -89,7 +90,10 @@ export default {
   .slider
     max-width 100%
     .slider-item
+      display block
+      height 30px
       padding-top 35%
+      background rgba(0,0,0,0.5)
   .content
     margin-top 40px
 </style>

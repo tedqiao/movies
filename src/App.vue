@@ -84,10 +84,10 @@ export default {
       >a
         color rgb(52, 99, 135)
 .app-content
-   margin-top 40px
+   margin-top 35px
    padding 4px
    min-height 1000px
-   background rgba(0,0,0,0.0)
+   background rgba(0,0,0,0.1)
 .footer
   flex-shrink 0
   padding 6px
