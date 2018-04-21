@@ -93,4 +93,7 @@ export default {
   padding 6px
   height 80px
   background rgb(52, 99, 135)
+@media (max-width: 700px)
+  .app-content
+    background #fff
 </style>

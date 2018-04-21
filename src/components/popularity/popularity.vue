@@ -10,7 +10,6 @@
     @click="select(index)" :key="index">
       {{item}}
     </div>
-    <div class="line"></div>
   </div>
   <div class="popularity-body">
     <div class="movie-item" v-for="(movie,index) in movies" :key="index">
@@ -78,12 +77,15 @@ export default {
     font-size 14px
     line-height 20px
     color rgba(7,17,27,0.5)
+    border-bottom 1px solid rgb(0,0,0)
     .menu-item
       display inline-block
       padding 3px 15px
       cursor: default
       &.current
+        position relative
         background #fff
+        bottom -1px
         border 1px solid rgb(0,0,0)
         border-bottom 1px solid rgb(255,255,255)
     .line
@@ -154,4 +156,11 @@ export default {
       border: 1px solid transparent;
       border-radius: 4px;
       margin-top: 5px;
+@media (max-width: 700px)
+  .popularity
+    background #fff
+    margin-top 10px
+    padding 0 10px
+    .popularity-header
+      padding 5px 5px 0px 5px
 </style>

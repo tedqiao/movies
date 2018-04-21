@@ -9,6 +9,10 @@
  <div class="content">
    <popularity :movies="movies.subjects"></popularity>
    <popularity :movies="movies.subjects" :menuList="newMenuList" :btn="true"></popularity>
+   <category v-for="(category,index) in categories"
+   :key="index"
+   :movies="movies.subjects"
+   :title="category"></category>
  </div>
 </div>
 </template>
@@ -16,6 +20,7 @@
 <script type="text/ecmascript-6">
 import slider from 'vue-concise-slider';
 import popularity from '../popularity/popularity';
+import category from '../category/category';
 
 export default {
   data() {
@@ -35,11 +40,13 @@ export default {
       },
       movies: [],
       newMenuList: [],
+      categories: [],
     };
   },
   components: {
     slider,
     popularity,
+    category,
   },
   methods: {
     // slide(data) {
@@ -81,6 +88,7 @@ export default {
     }];
 
     this.newMenuList = ['今日更新', '电影', '电视剧', '综艺', '动漫'];
+    this.categories = ['欧美电影', '华语电影', '日韩电影', '动画电影', '电视剧'];
   },
 };
 </script>
@@ -95,5 +103,8 @@ export default {
       padding-top 35%
       background rgba(0,0,0,0.5)
   .content
-    margin-top 40px
+    margin 40px 20px
+  @media (max-width:700px)
+    .content
+     margin 10px 0px
 </style>
